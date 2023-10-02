@@ -46,12 +46,12 @@ public class JobTest {
 
     @Test
     public void testToStringContainsCorrectLabelsAndData() {
-        Job correctLabelsJob = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job correctLabelsJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String expectedString =
                 System.lineSeparator() +
-                        "ID: 1" + System.lineSeparator() +
+                        "ID: " + correctLabelsJob.getId() + System.lineSeparator() +
                         "Name: Product tester" + System.lineSeparator() +
-                        "Employer: Data not available" + System.lineSeparator() +
+                        "Employer: ACME" + System.lineSeparator() +
                         "Location: Desert" + System.lineSeparator() +
                         "Position Type: Quality control" + System.lineSeparator() +
                         "Core Competency: Persistence" + System.lineSeparator();
@@ -61,6 +61,6 @@ public class JobTest {
     @Test
     public void testToStringHandlesEmptyField() {
         Job emptyFieldJob = new Job();
-        assertEquals("OOPS! This job does not seem to exist.", emptyFieldJob.toString());
+        assertEquals(System.lineSeparator() + "OOPS! This job does not seem to exist." + System.lineSeparator(), emptyFieldJob.toString());
     }
 }

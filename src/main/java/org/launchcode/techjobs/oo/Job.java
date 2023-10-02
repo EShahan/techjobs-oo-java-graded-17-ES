@@ -34,7 +34,7 @@ public class Job {
     public String toString() {
 
         if (this.name == null || this.employer == null || this.location == null || this.positionType == null || this.coreCompetency == null) {
-            return "OOPS! This job does not seem to exist.";
+            return System.lineSeparator() + "OOPS! This job does not seem to exist." + System.lineSeparator();
         }
 
         String returnString = "";
