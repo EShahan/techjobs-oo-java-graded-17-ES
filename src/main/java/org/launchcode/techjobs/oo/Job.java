@@ -13,9 +13,7 @@ public class Job {
     private PositionType positionType;
     private CoreCompetency coreCompetency;
 
-    // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
-    //  other five fields. The second constructor should also call the first in order to initialize
-    //  the 'id' field.
+    // added two constructors
     public Job() {
         id = nextId;
         nextId++;
@@ -30,8 +28,59 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
-    //  match.
+    // Added custom equals and hashCode methods.
+
+    @Override
+    public String toString() {
+
+        if (this.name == null || this.employer == null || this.location == null || this.positionType == null || this.coreCompetency == null) {
+            return "OOPS! This job does not seem to exist.";
+        }
+
+        String returnString = "";
+
+        returnString += System.lineSeparator();
+
+        returnString += "ID: " + this.getId() + System.lineSeparator();
+
+        if (this.getName().isEmpty()) {
+            returnString += "Name: Data not available" + System.lineSeparator();
+        }
+        else {
+            returnString += "Name: " + this.getName() + System.lineSeparator();
+        }
+
+        if (this.getEmployer().getValue().isEmpty()) {
+            returnString += "Employer: Data not available" + System.lineSeparator();
+        }
+        else {
+            returnString += "Employer: " + this.getEmployer().getValue() + System.lineSeparator();
+        }
+
+        if (this.getLocation().getValue().isEmpty()) {
+            returnString += "Location: Data not available" + System.lineSeparator();
+        }
+        else {
+            returnString += "Location: " + this.getLocation().getValue() + System.lineSeparator();
+        }
+
+        if (this.getPositionType().getValue().isEmpty()) {
+            returnString += "Position Type: Data not available" + System.lineSeparator();
+        }
+        else {
+            returnString += "Position Type: " + this.getPositionType().getValue() + System.lineSeparator();
+        }
+
+        if (this.getCoreCompetency().getValue().isEmpty()) {
+            returnString += "Core Competency: Data not available";
+        }
+        else {
+            returnString += "Core Competency: " + this.getCoreCompetency().getValue();
+        }
+        returnString += System.lineSeparator();
+
+        return returnString;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -46,8 +95,7 @@ public class Job {
         return Objects.hash(id);
     }
 
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id.
+    // added getters and setters
 
     public String getName() {
         return name;

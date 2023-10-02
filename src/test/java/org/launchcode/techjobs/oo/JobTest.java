@@ -36,4 +36,31 @@ public class JobTest {
 
         assertFalse(firstJob.equals(secondJob));
     }
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job newLineJob = new Job();
+        assertTrue(newLineJob.toString().startsWith(System.lineSeparator()));
+        assertTrue(newLineJob.toString().endsWith(System.lineSeparator()));
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job correctLabelsJob = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String expectedString =
+                System.lineSeparator() +
+                        "ID: 1" + System.lineSeparator() +
+                        "Name: Product tester" + System.lineSeparator() +
+                        "Employer: Data not available" + System.lineSeparator() +
+                        "Location: Desert" + System.lineSeparator() +
+                        "Position Type: Quality control" + System.lineSeparator() +
+                        "Core Competency: Persistence" + System.lineSeparator();
+        assertEquals(expectedString, correctLabelsJob.toString());
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job emptyFieldJob = new Job();
+        assertEquals("OOPS! This job does not seem to exist.", emptyFieldJob.toString());
+    }
 }
